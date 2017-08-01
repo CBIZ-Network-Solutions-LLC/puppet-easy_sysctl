@@ -1,0 +1,40 @@
+{
+  "name": "qtechnologies-easy_sysctl",
+  "version": "1.0.0",
+  "author": "Q-Technologies",
+  "summary": "Abstraction layer above augeasproviders_sysctl module to make using hiera easier and less verbose.",
+  "license": "Apache-2.0",
+  "source": "https://github.com/Q-Technologies/puppet-easy_sysctl.git",
+  "project_page": "https://github.com/Q-Technologies/puppet-easy_sysctl",
+  "issues_url": "https://github.com/Q-Technologies/puppet-easy_sysctl/issues",
+  "tags": ["sysctl","hiera"],
+  "dependencies": [
+    {"name":"herculesteam-augeasproviders_sysctl","version_requirement":">= 2.2.0"},
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem":"Debian",
+      "operatingsystemrelease": [
+        "7.0",
+        "8.0"
+      ]
+    },
+    {
+      "operatingsystem":"RedHat",
+      "operatingsystemrelease": [
+        "6.0",
+        "7.0"
+      ]
+    },
+    {
+      "operatingsystem": "SLES",
+      "operatingsystemrelease": [
+        "11",
+        "12"
+     ]
+    }
+  ],
+  "data_provider": "hiera"
+}
+
