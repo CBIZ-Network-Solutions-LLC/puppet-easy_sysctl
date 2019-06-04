@@ -7,21 +7,27 @@
   "source": "https://github.com/Q-Technologies/puppet-easy_sysctl.git",
   "project_page": "https://github.com/Q-Technologies/puppet-easy_sysctl",
   "issues_url": "https://github.com/Q-Technologies/puppet-easy_sysctl/issues",
-  "tags": ["sysctl","hiera"],
   "dependencies": [
-    {"name":"herculesteam-augeasproviders_sysctl","version_requirement":">= 2.2.0"},
-    {"name":"puppetlabs-stdlib","version_requirement":">= 4.14.0"}
+    {
+      "name": "herculesteam-augeasproviders_sysctl",
+      "version_requirement": ">= 2.2.0"
+    },
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 4.14.0"
+    }
   ],
+  "data_provider": "hiera",
   "operatingsystem_support": [
     {
-      "operatingsystem":"Debian",
+      "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "7.0",
         "8.0"
       ]
     },
     {
-      "operatingsystem":"RedHat",
+      "operatingsystem": "RedHat",
       "operatingsystemrelease": [
         "6.0",
         "7.0"
@@ -32,9 +38,20 @@
       "operatingsystemrelease": [
         "11",
         "12"
-     ]
+      ]
     }
   ],
-  "data_provider": "hiera"
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.10.0 < 7.0.0"
+    }
+  ],
+  "tags": [
+    "sysctl",
+    "hiera"
+  ],
+  "pdk-version": "1.9.1",
+  "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git",
+  "template-ref": "1.9.1-0-g6945d31"
 }
-
