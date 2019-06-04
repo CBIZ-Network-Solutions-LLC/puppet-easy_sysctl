@@ -1,6 +1,6 @@
 {
   "name": "qtechnologies-easy_sysctl",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Q-Technologies",
   "summary": "Abstraction layer above augeasproviders_sysctl module to make using hiera easier and less verbose.",
   "license": "Apache-2.0",
