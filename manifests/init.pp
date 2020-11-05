@@ -13,36 +13,22 @@ class easy_sysctl {
   $hash_osfamily_active = $sysctl_active[$facts[osfamily]]
   $hash_kernel_persist = $sysctl_persist[$facts[kernel]]
   $hash_osfamily_persist = $sysctl_persist[$facts[osfamily]]
-  $list_kernel_rm = $sysctl_remove[$facts[kernel]]
-  $list_osfamily_rm =  $sysctl_remove[$facts[osfamily]]
+  $hash_kernel_rm = $sysctl_remove[$facts[kernel]]
+  $hash_osfamily_rm =  $sysctl_remove[$facts[osfamily]]
 
   # Merge these hashs into one hash for each action
-  #if $hash_osfamily_active {
-    $hash_active = deep_merge($hash_kernel_active,$hash_osfamily_active)
-    #} else {
-    #$hash_active = $hash_kernel_active
-    #}
+  $hash_active = deep_merge($hash_kernel_active,$hash_osfamily_active)
 
-    #if $hash_osfamily_persist {
-    $hash_persist = deep_merge($hash_kernel_persist,$hash_osfamily_persist)
-    #} else {
-    #$hash_persist = $hash_kernel_persist
-    #}
+  $hash_persist = deep_merge($hash_kernel_persist,$hash_osfamily_persist)
 
-  if $list_osfamily_rm {
-    $list_remove = any2array($list_kernel_rm) + any2array($list_osfamily_rm)
-  } else {
-    $list_remove = any2array($list_kernel_rm)
-  }
+  $hash_remove = deep_merge($hash_kernel_rm,$hash_osfamily_rm)
 
-  # Make sure we don't try to remove any we have tried to add
-  $sysctl_to_remove = $list_remove - keys($hash_persist) - keys($hash_active)
-  $sysctl_to_remove.each | $sysctl | {
-    if $sysctl != '' {
-      sysctl { $sysctl:
-        ensure => absent,
+  $hash_remove.each | $sysctl, $value | {
+      if $sysctl != '' {
+          sysctl { $sysctl:
+              ensure  => absent,
+          }
       }
-    }
   }
 
   $hash_persist.each | $sysctl, $value | {
